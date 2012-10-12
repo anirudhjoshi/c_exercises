@@ -15,10 +15,11 @@ typedef struct linked_list_s {
 
     node *start;
     node *end;
+    unsigned int size;
 
 } linked_list;
 
-int create(int *data, int size) {
+void* create(int *data, int size) {
 
     int i;
 
@@ -44,6 +45,7 @@ int create(int *data, int size) {
 
     current->next = 0;
     list->end = current;
+    list->size = size;
 
     for (current = list->start; current->next != 0; current = current->next){
 
@@ -51,6 +53,6 @@ int create(int *data, int size) {
 
     }
 
-    return 0;
+    return (void*) list;
 
 }
