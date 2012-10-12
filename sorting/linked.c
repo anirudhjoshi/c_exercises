@@ -10,7 +10,6 @@ typedef struct node_s {
 
 } node;
 
-
 typedef struct linked_list_s {
 
     node *start;
@@ -28,16 +27,46 @@ int insert(void *l, int value) {
         return 0;
 
     new->next = 0;
-    new->previous = list->end;
     new->value = value;
 
-    if (list->end->next)
-        list->end->next = new;
+    if (list->end) {
 
-    list->end = new;
+        list->end->next = new;
+        new->previous = list->end;
+        list->end = new;
+
+    } else if (list->start){
+
+        new->previous = list->start;
+        list->start->next = new;
+        list->end = new;
+
+    } else {
+
+        new->previous = 0;
+        list->start = new;
+    }
 
     return 1;
 
+}
+
+void printList(void* l){
+
+    linked_list *list = (linked_list*) l;
+
+    if (list == NULL)
+        return;
+
+    node *current;
+
+    for (current = list->start; current != 0; current = current->next){
+
+        printf("%i\n", current->value);
+
+    }
+
+    return;
 }
 
 void* initialise(){
