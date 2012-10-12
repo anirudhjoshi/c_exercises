@@ -53,6 +53,7 @@ void* create(int *data, int size) {
 }
 
 int insert(void *l, int value) {
+
     linked_list *list = (linked_list*) l;
     node *new = malloc(sizeof(node));
 
@@ -62,7 +63,10 @@ int insert(void *l, int value) {
     new->next = 0;
     new->previous = list->end;
     new->value = value;
-    list->end->next = new;
+
+    if (list->end->next)
+        list->end->next = new;
+
     list->end = new;
 
     return 1;
@@ -72,6 +76,9 @@ int insert(void *l, int value) {
 void* initialise(){
 
     linked_list *list = malloc(sizeof(linked_list));
+
+    if (list == NULL)
+        return NULL;
 
     list->size = 0;
     list->start = 0;

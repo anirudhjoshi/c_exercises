@@ -18,7 +18,7 @@ int main(){
     for (i = 0; i < MAX; i++) {
 
         int num = rand() % (1000 - 1);
-        insert(list, num);
+        //insert(list, num);
 
     }
 
