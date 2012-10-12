@@ -13,14 +13,14 @@ int main(){
 
     srand(time(NULL));
 
+    void *list = initialise();
+
     for (i = 0; i < MAX; i++) {
 
         int num = rand() % (1000 - 1);
-        data[i] = i;
+        insert(list, num);
 
     }
-
-    create(data, MAX);
 
     return 0;
 

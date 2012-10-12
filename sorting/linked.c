@@ -29,6 +29,7 @@ void* create(int *data, int size) {
     node *current = malloc(sizeof(node));
     node *next = malloc(sizeof(node));
 
+    current->previous = 0;
     list->start = current;
 
     for (i = 0; i < size; i++) {
@@ -47,11 +48,34 @@ void* create(int *data, int size) {
     list->end = current;
     list->size = size;
 
-    for (current = list->start; current->next != 0; current = current->next){
+    return (void*) list;
 
-        printf("%i\n", current->value);
+}
 
-    }
+int insert(void *l, int value) {
+    linked_list *list = (linked_list*) l;
+    node *new = malloc(sizeof(node));
+
+    if (new == NULL)
+        return 0;
+
+    new->next = 0;
+    new->previous = list->end;
+    new->value = value;
+    list->end->next = new;
+    list->end = new;
+
+    return 1;
+
+}
+
+void* initialise(){
+
+    linked_list *list = malloc(sizeof(linked_list));
+
+    list->size = 0;
+    list->start = 0;
+    list->end = 0;
 
     return (void*) list;
 
