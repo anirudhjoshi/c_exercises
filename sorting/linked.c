@@ -19,39 +19,6 @@ typedef struct linked_list_s {
 
 } linked_list;
 
-void* create(int *data, int size) {
-
-    int i;
-
-    linked_list *list = malloc(sizeof(list));
-    list->start = list->end = 0;
-
-    node *current = malloc(sizeof(node));
-    node *next = malloc(sizeof(node));
-
-    current->previous = 0;
-    list->start = current;
-
-    for (i = 0; i < size; i++) {
-
-        current->value = data[i];
-        current->next = next;
-        next->previous = current;
-
-        current = next;
-
-        next = malloc(sizeof(node));
-
-    }
-
-    current->next = 0;
-    list->end = current;
-    list->size = size;
-
-    return (void*) list;
-
-}
-
 int insert(void *l, int value) {
 
     linked_list *list = (linked_list*) l;
