@@ -4,7 +4,7 @@
 
 #include "sorting.h"
 
-#define MAX 1000
+#define MAX 10
 
 int main(){
 
@@ -18,11 +18,13 @@ int main(){
     for (i = 0; i < MAX; i++) {
 
         int num = rand() % (1000 - 1);
-        insert(list, i);
+        insert(list, num);
 
     }
 
     printList(list);
+
+    printf("Key: %i, Value: %i\n", 50, locate(list, 50));
 
     return 0;
 

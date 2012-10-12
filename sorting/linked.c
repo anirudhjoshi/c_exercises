@@ -5,6 +5,7 @@
 
 typedef struct node_s {
 
+    int key;
     int value;
     struct node_s *next, *previous;
 
@@ -31,8 +32,8 @@ int insert(void *l, int value) {
 
     if (list->end) {
 
-        list->end->next = new;
         new->previous = list->end;
+        list->end->next = new;
         list->end = new;
 
     } else if (list->start){
@@ -45,9 +46,33 @@ int insert(void *l, int value) {
 
         new->previous = 0;
         list->start = new;
+
     }
 
+    new->key = list->size;
+    list->size++;
+
     return 1;
+
+}
+
+int locate(void* l, int key) {
+
+    linked_list *list = (linked_list*) l;
+
+    if (list == NULL)
+        return -1;
+
+    node *current;
+
+    for (current = list->start; current->next != 0; current = current->next){
+
+        if (current->key == key)
+            return current->value;
+
+    }
+
+    return -1;
 
 }
 
@@ -62,7 +87,8 @@ void printList(void* l){
 
     for (current = list->start; current != 0; current = current->next){
 
-        printf("%i\n", current->value);
+        printf("Value: %i, Key: %i, Size: %i\n", current->value,
+        current->key, list->size);
 
     }
 
