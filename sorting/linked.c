@@ -56,7 +56,7 @@ int insert(void *l, int value) {
 
 }
 
-int locate(void* l, int key) {
+int get(void* l, int key) {
 
     linked_list *list = (linked_list*) l;
 
@@ -73,6 +73,30 @@ int locate(void* l, int key) {
     }
 
     return -1;
+
+}
+
+int put(void* l, int key, int value){
+
+    linked_list *list = (linked_list*) l;
+    node *new = malloc(sizeof(node));
+
+    if (new == NULL)
+        return -1;
+
+    if (key == 0){
+
+        list->start->previous = new;
+        new->next = list->start;
+
+        list->start = new;
+
+    }
+
+    if (key = list->size){
+
+
+    }
 
 }
 

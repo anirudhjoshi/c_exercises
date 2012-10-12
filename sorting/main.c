@@ -24,7 +24,7 @@ int main(){
 
     printList(list);
 
-    printf("Key: %i, Value: %i\n", 50, locate(list, 50));
+    printf("Key: %i, Value: %i\n", 50, get(list, 50));
 
     return 0;
 
