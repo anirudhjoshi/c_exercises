@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "sorting.h"
 
 typedef struct node_s {
 
-    int key;
+    char *key;
     int value;
     struct node_s *next, *previous;
 
@@ -19,7 +20,7 @@ typedef struct linked_list_s {
 
 } linked_list;
 
-int insert(void *l, int value) {
+int insert(void *l, char *key, int value) {
 
     linked_list *list = (linked_list*) l;
     node *new = malloc(sizeof(node));
@@ -29,6 +30,7 @@ int insert(void *l, int value) {
 
     new->next = 0;
     new->value = value;
+    new->key = key;
 
     if (list->end) {
 
@@ -49,14 +51,13 @@ int insert(void *l, int value) {
 
     }
 
-    new->key = list->size;
     list->size++;
 
     return 1;
 
 }
 
-int get(void* l, int key) {
+int get(void* l, char *key) {
 
     linked_list *list = (linked_list*) l;
 
@@ -67,7 +68,7 @@ int get(void* l, int key) {
 
     for (current = list->start; current->next != 0; current = current->next){
 
-        if (current->key == key)
+        if ( strcmp(current->key, key) )
             return current->value;
 
     }
@@ -111,7 +112,7 @@ void printList(void* l){
 
     for (current = list->start; current != 0; current = current->next){
 
-        printf("Value: %i, Key: %i, Size: %i\n", current->value,
+        printf("Value: %i, Key: %s, Size: %i\n", current->value,
         current->key, list->size);
 
     }

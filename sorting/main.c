@@ -9,11 +9,11 @@
 char* randomString(char *s, int size){
 
     int i;
-    int randomLength = rand() % (size) + 1;
+//    int randomLength = rand() % (size) + 1;
 
     static const char pool[] = "123456789" "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    for (i = 0; i < randomLength; i++){
+    for (i = 0; i < size; i++){
 
         s[i] = pool[ rand() % (sizeof pool- 1)];
 
@@ -29,7 +29,7 @@ int main(){
 
     int i;
     int *data = malloc(sizeof(int) * MAX);
-    char* s = malloc(sizeof(char) * MAX);
+     char* s;
 
     srand(time(NULL));
 
@@ -39,16 +39,16 @@ int main(){
 
         int num = rand() % (1000 - 1);
 
+        s = malloc(sizeof(char) * MAX);
         randomString(s, MAX);
 
-        printf("%s\n", s);
-        insert(list, num);
+        insert(list, s, num);
 
     }
 
     printList(list);
 
-    printf("Key: %i, Value: %i\n", 50, get(list, 50));
+    printf("Key: %s, Value: %i\n", s, get(list, s));
 
     return 0;
 
