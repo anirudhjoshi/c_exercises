@@ -29,7 +29,8 @@ int main(){
 
     int i;
     int *data = malloc(sizeof(int) * MAX);
-     char* s;
+     char* key;
+     char* value;
 
     srand(time(NULL));
 
@@ -37,18 +38,37 @@ int main(){
 
     for (i = 0; i < MAX; i++) {
 
-        int num = rand() % (1000 - 1);
+        record* data = malloc(sizeof(record));
 
-        s = malloc(sizeof(char) * MAX);
-        randomString(s, MAX);
+        key = malloc(sizeof(char) * MAX);
+        value = malloc(sizeof(char) * MAX);
 
-        put(list, s, num);
+        randomString(key, MAX);
+        randomString(value, MAX);
+
+        data->key = key;
+        data->value = value;
+
+        put(list, data);
 
     }
 
     printList(list);
 
-    printf("Key: %s, Value: %i\n", s, get(list, s));
+    record* getR = get(list,key);
+
+    if (getR) {
+
+        char* getValue = getR->value;
+        printf("Key: %s, Value: %s, GValue: %s\n", key, value, getValue);
+
+    }
+
+    del(list, key);
+
+    printList(list);
+    return 0;
+    printf("Key: %s, Value: %s\n", key, get(list, key)->value);
 
     return 0;
 
