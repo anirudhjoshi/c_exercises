@@ -20,7 +20,7 @@ typedef struct linked_list_s {
 
 } linked_list;
 
-int insert(void *l, char *key, int value) {
+int put(void *l, char *key, int value) {
 
     linked_list *list = (linked_list*) l;
     node *new = malloc(sizeof(node));
@@ -74,30 +74,6 @@ int get(void* l, char *key) {
     }
 
     return -1;
-
-}
-
-int put(void* l, int key, int value){
-
-    linked_list *list = (linked_list*) l;
-    node *new = malloc(sizeof(node));
-
-    if (new == NULL)
-        return -1;
-
-    if (key == 0){
-
-        list->start->previous = new;
-        new->next = list->start;
-
-        list->start = new;
-
-    }
-
-    if (key = list->size){
-
-
-    }
 
 }
 

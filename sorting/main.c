@@ -42,7 +42,7 @@ int main(){
         s = malloc(sizeof(char) * MAX);
         randomString(s, MAX);
 
-        insert(list, s, num);
+        put(list, s, num);
 
     }
 
