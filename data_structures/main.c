@@ -53,6 +53,8 @@ int main(){
 
     printList(list);
 
+    return 0;
+
     record* r = get(list,key);
 
     if (r) {
