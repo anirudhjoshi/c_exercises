@@ -53,24 +53,24 @@ int main(){
 
     printList(list);
 
-    record* getR = get(list,key);
+    record* r = get(list,key);
 
-    if (getR) {
+    if (r) {
 
-        char* getValue = getR->value;
-        printf("Key: %s, Value: %s, GValue: %s\n", key, value, getValue);
+        char* v = r->value;
+        printf("Key: %s, Value: %s, GValue: %s\n", key, value, v);
 
     }
 
     del(list, key);
 
     printList(list);
-    getR = get(list,key);
+    r = get(list,key);
 
-    if (getR) {
+    if (r) {
 
-        char* getValue = getR->value;
-        printf("Key: %s, Value: %s, GValue: %s\n", key, value, getValue);
+        char* v = r->value;
+        printf("Key: %s, Value: %s, GValue: %s\n", key, value, v);
 
     } else {
 
