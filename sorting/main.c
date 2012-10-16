@@ -9,8 +9,6 @@
 char* randomString(char *s, int size){
 
     int i;
-//    int randomLength = rand() % (size) + 1;
-
     static const char pool[] = "123456789" "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     for (i = 0; i < size; i++){
@@ -65,10 +63,20 @@ int main(){
     }
 
     del(list, key);
+   // printList(list);
 
-    printList(list);
-    return 0;
-    printf("Key: %s, Value: %s\n", key, get(list, key)->value);
+    getR = get(list,key);
+
+    if (getR) {
+
+        char* getValue = getR->value;
+        printf("Key: %s, Value: %s, GValue: %s\n", key, value, getValue);
+
+    } else {
+
+        printf("Not found.");
+
+    }
 
     return 0;
 
