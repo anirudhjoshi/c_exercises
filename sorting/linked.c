@@ -69,7 +69,7 @@ record* get(void* l, char *key) {
     node *current;
 
     for (current = list->start; current->next != 0; current = current->next){
-        printf( "%p -> %p \n", (void*) current, current->next);
+
         if ( strcmp(current->data->key, key) == 0 ){
 
             return current->data;
@@ -77,8 +77,6 @@ record* get(void* l, char *key) {
         }
 
     }
-
-    printf( "%p -> %p \n", (void*) current, current->next);
 
     if ( strcmp(current->data->key, key) == 0 ){
 
@@ -139,8 +137,6 @@ void deleteNode(linked_list* list, node* current) {
 
 
     if (next == 0) {
-
-        printf("%p, %p\n", (void*) next, (void*) previous);
 
         previous->next = 0;
         list->end = previous;

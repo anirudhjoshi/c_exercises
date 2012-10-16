@@ -63,8 +63,8 @@ int main(){
     }
 
     del(list, key);
-   // printList(list);
 
+    printList(list);
     getR = get(list,key);
 
     if (getR) {
